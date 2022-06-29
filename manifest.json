@@ -1,0 +1,43 @@
+{
+  "name": "APIZZA Send Request Plugins",
+  "short_name": "APIZZA SQ",
+  "description": "APIZZA is a powerful API management platform",
+  "icons": {
+    "16": "assets/icons/24x24.png",
+    "48": "assets/icons/72x72.png",
+    "128": "assets/icons/114x114.png"
+  },
+  "manifest_version": 2,
+  "version": "2.1.1",
+
+  "background": {
+    "scripts": ["./background.js"],
+    "persistent": true
+  },
+
+  "browser_action": {
+    "default_title": "点击进入apizza官网",
+    "default_icon": {
+      "19": "assets/icons/24x24.png",
+      "38": "assets/icons/72x72.png"
+    }
+  },
+
+  "content_scripts": [
+    {
+      "all_frames": false,
+      "css": ["assets/css/styles.css"],
+      "js": ["./contentScripts.js"],
+      "matches": ["http://*/*", "https://*/*"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
